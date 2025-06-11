@@ -1,0 +1,12 @@
+{
+  "home": "Home",
+  "company": "Company",
+  "company_list": "Company List",
+  "company_details": "Company Details",
+  "todo_list": "TODO List",
+  "work_report": "Work Report",
+  "setting": "Settings",
+  "system_settings": "System Settings",
+  "manage_user": "Manage User",
+  "view_user": "View User"
+}

@@ -1,0 +1,190 @@
+.company-list-page {
+  .filter-bar-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .clear-button {
+    min-width: 100px;
+    padding: 8px 16px;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .filter-button {
+    min-width: 100px;
+    padding: 8px 16px;
+    background-color: #1976d2; // Blue
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .dx-button {
+    white-space: nowrap;
+  }
+
+  .dx-selectbox {
+    min-width: 180px;
+  }
+
+  .data-grid-container {
+    margin-top: 20px;
+  }
+
+  .room-settings-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    .room-settings-label {
+      font-weight: bold;
+      white-space: nowrap;
+      min-width: 190px;
+    }
+
+    .room-settings-select {
+      width: 205px;
+    }
+  }
+
+  .boxBackround {
+    background-color: #f9f9f9;
+    border-radius: 90px;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+
+    > div {
+      flex: 1 1 220px;
+      min-width: 200px;
+    }
+  }
+
+  // .responsive-filter-container {
+  //   display: flex !important;
+  //   flex-wrap: nowrap !important;
+  //   overflow-x: auto;
+  //   gap: 16px;
+  //   padding: 16px;
+  //   background-color: #f8f9fa;
+
+  //   &::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  //   -ms-overflow-style: none;
+  //   scrollbar-width: none;
+  // }
+
+  // .filter-item {
+  //   flex: 0 0 auto;
+  //   min-width: 200px;
+  // }
+
+  // @media screen and (max-width: 768px) {
+  //   .responsive-filter-container {
+  //     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  //     gap: 12px;
+  //   }
+  // }
+
+  // @media screen and (max-width: 480px) {
+  //   .responsive-filter-container {
+  //     grid-template-columns: 1fr;
+  //   }
+  // }
+
+  @media screen and (max-width: 768px) {
+    .room-settings-field {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .room-settings-label,
+      .room-settings-select {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+
+    .boxBackround {
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+
+      > div {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+
+    .dx-textbox,
+    .dx-selectbox,
+    .dx-dropdowneditor,
+    .dx-texteditor-input,
+    .dx-placeholder {
+      width: 100% !important;
+    }
+
+    .dx-field-label,
+    .dx-field-value {
+      width: 100%;
+    }
+
+    .dx-field {
+      flex-direction: column;
+    }
+
+    .dx-popup-content {
+      padding: 10px !important;
+    }
+
+    .dx-datagrid-headers,
+    .dx-datagrid-rowsview {
+      font-size: 14px;
+    }
+
+    .dx-button {
+      font-size: 14px !important;
+    }
+  }
+  .toolbarPadding {
+    padding: 16px !important;
+  }
+
+  .custom-hover-row:hover:not(.dx-selection) {
+    font-weight: bold;
+    color: rgba(212, 76, 76, 0.894);
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "clear": "クリア",
+  "filter": "フィルター",
+  "company_name": "会社名",
+  "location": "場所",
+  "our_representative": "弊社担当者",
+  "start_date": "開始日",
+  "due_date": "期限日",
+  "content": "内容",
+  "remark": "備考",
+  "response_record": "対応記録",
+  "date": "日付",
+  "time": "時間",
+  "representative": "担当者",
+  "other_representative": "他の担当者",
+  "allow_selection": "選択を許可",
+  "is_printed": "印刷済み",
+  "report_time": "報告時間",
+  "required": "必須",
+  "contact_person": "連絡担当者",
+  "add_work_report": "対応記録を追加",
+  "wr_title": "タイトル",
+  "wrMessages": {
+    "letters_only_allowed": "文字とスペースのみ使用できます",
+    "add_edit_workReport": "作業報告の追加 / 編集",
+    "workReport_added_successfully": "作業報告が正常に追加されました",
+    "workReport_add_error": "作業報告の追加に失敗しました",
+    "workReport_updated_successfully": "作業報告が正常に更新されました",
+    "workReport_update_error": "作業報告の更新に失敗しました",
+    "workReport_removed_successfully": "作業報告が正常に削除されました",
+    "workReport_remove_error": "作業報告の削除に失敗しました"
+  }
+}

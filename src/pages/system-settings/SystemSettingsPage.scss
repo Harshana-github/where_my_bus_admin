@@ -1,0 +1,73 @@
+.system-settings {
+  .data-grid-container {
+    margin-top: 20px;
+  }
+
+  .room-settings-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    .room-settings-label {
+      font-weight: bold;
+      white-space: nowrap;
+      min-width: 190px;
+    }
+
+    .room-settings-select {
+      width: 205px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .room-settings-field {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .room-settings-label,
+      .room-settings-select {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+
+    .dx-popup-content {
+      padding: 10px !important;
+    }
+
+    .dx-datagrid-headers,
+    .dx-datagrid-rowsview {
+      font-size: 14px;
+    }
+
+    .dx-button {
+      font-size: 14px !important;
+    }
+  }
+}
+
+.dx-button-has-icon .dx-icon {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  margin-inline-end: 10px;
+  margin-inline-start: 0px;
+}
+
+.dx-toolbar-label > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0px 3px;
+  padding: 0px 5px;
+}
+
+.dx-popup-bottom.dx-toolbar .dx-toolbar-item:last-child {
+  padding-right: 10px;
+}
+
+// .dx-datagrid-header-panel {
+//   margin-top: -20px;
+//   margin-bottom: -10px;
+// }

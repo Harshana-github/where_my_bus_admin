@@ -1,0 +1,112 @@
+{
+  "settings": {
+    "tabs": {
+      "system_settings": "ユーザーレベル",
+      "department": "部署",
+      "task_priority": "タスク優先度",
+      "task_status": "タスクステータス",
+      "handling_company": "取扱会社"
+    },
+    "common": {
+      "fields": {
+        "is_active": "有効"
+      },
+      "messages": {
+        "search": "検索...",
+        "confirm_delete": "この項目を削除してもよろしいですか？",
+        "save": "保存",
+        "add": "追加",
+        "cancel": "キャンセル",
+        "edit": "編集",
+        "delete": "削除"
+      }
+    },
+    "userLevel": {
+      "fields": {
+        "name": "ユーザーレベル",
+        "description": "説明"
+      },
+      "messages": {
+        "system_user_level_required": "ユーザーレベル名は必須です",
+        "letters_only_allowed": "文字とスペースのみ使用できます",
+        "add_edit_system_settings": "ユーザーレベルの追加 / 編集",
+        "user_level_added_successfully": "ユーザーレベルが正常に追加されました",
+        "user_level_add_error": "ユーザーレベルの追加に失敗しました",
+        "user_level_updated_successfully": "ユーザーレベルが正常に更新されました",
+        "user_level_update_error": "ユーザーレベルの更新に失敗しました",
+        "user_level_removed_successfully": "ユーザーレベルが正常に削除されました",
+        "user_level_remove_error": "ユーザーレベルの削除に失敗しました"
+      }
+    },
+    "department": {
+      "fields": {
+        "department_name": "部署名"
+      },
+      "messages": {
+        "department_name_required": "部署名は必須です",
+        "add_edit_department": "部署の追加 / 編集",
+        "add_success": "部署が正常に追加されました",
+        "add_error": "部署の追加に失敗しました",
+        "update_success": "部署が正常に更新されました",
+        "update_error": "部署の更新に失敗しました",
+        "delete_success": "部署が正常に削除されました",
+        "delete_error": "部署の削除に失敗しました"
+      }
+    },
+    "taskPriority": {
+      "fields": {
+        "priority_name": "優先度名",
+        "color_code": "カラーコード"
+      },
+      "messages": {
+        "priority_name_required": "優先度名は必須です",
+        "color_code_required": "カラーコードは必須です",
+        "not_choose": "未選択",
+        "invalid": "無効",
+        "copied": "コピーしました",
+        "add_edit_task_priority": "タスク優先度の追加 / 編集",
+        "add_success": "タスク優先度が正常に追加されました",
+        "add_error": "タスク優先度の追加に失敗しました",
+        "update_success": "タスク優先度が正常に更新されました",
+        "update_error": "タスク優先度の更新に失敗しました",
+        "delete_success": "タスク優先度が正常に削除されました",
+        "delete_error": "タスク優先度の削除に失敗しました"
+      }
+    },
+    "taskStatus": {
+      "fields": {
+        "status_name": "ステータス名",
+        "color_code": "カラーコード"
+      },
+      "messages": {
+        "status_name_required": "ステータス名は必須です",
+        "color_code_required": "カラーコードは必須です",
+        "not_choose": "未選択",
+        "invalid": "無効",
+        "copied": "コピーしました",
+        "add_edit_task_status": "タスクステータスの追加 / 編集",
+        "add_success": "タスクステータスが正常に追加されました",
+        "add_error": "タスクステータスの追加に失敗しました",
+        "update_success": "タスクステータスが正常に更新されました",
+        "update_error": "タスクステータスの更新に失敗しました",
+        "delete_success": "タスクステータスが正常に削除されました",
+        "delete_error": "タスクステータスの削除に失敗しました"
+      }
+    },
+    "handlingCompany": {
+      "fields": {
+        "handling_company_name": "取扱会社名"
+      },
+      "messages": {
+        "handling_company_name_required": "取扱会社は必須です",
+        "add_edit_handling_company": "取扱会社の追加 / 編集",
+        "add_success": "取扱会社が正常に追加されました",
+        "add_error": "取扱会社の追加に失敗しました",
+        "update_success": "取扱会社が正常に更新されました",
+        "update_error": "取扱会社の更新に失敗しました",
+        "delete_success": "取扱会社が正常に削除されました",
+        "delete_error": "取扱会社の削除に失敗しました"
+      }
+    }
+  }
+}

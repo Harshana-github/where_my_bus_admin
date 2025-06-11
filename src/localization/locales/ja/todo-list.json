@@ -1,0 +1,23 @@
+{
+  "show_filter": "フィルターを表示",
+  "hide_filter": "フィルターを非表示",
+  "clear": "クリア",
+  "filter": "フィルター",
+  "task_name": "タスク名",
+  "department": "部署",
+  "person_in_charge": "担当者",
+  "content": "内容",
+  "start_date": "開始日",
+  "due_date": "期限日",
+  "task_priority": "タスクの優先度",
+  "status": "ステータス",
+  "details": "詳細",
+  "add_new": "新規追加",
+  "company": "会社",
+  "required": "必須",
+  "add_task": "タスクを追加",
+  "expired_task_message": "このタスクは期限切れです",
+  "is_expired": "期限状態",
+  "available": "有効",
+  "expired": "期限切れ"
+}

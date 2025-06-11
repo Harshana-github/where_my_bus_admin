@@ -1,0 +1,33 @@
+{
+  "clear": "Clear",
+  "filter": "Filter",
+  "company_name": "Company Name",
+  "location": "Location",
+  "our_representative": "Our Representative",
+  "start_date": "Start Date",
+  "due_date": "Due Date",
+  "content": "Content",
+  "remark": "Remark",
+  "response_record": "Response Record",
+  "date": "Date",
+  "time": "Time",
+  "representative": "Representative",
+  "other_representative": "Other Representative",
+  "allow_selection": "Allow Selection",
+  "is_printed": "Is Printed",
+  "report_time": "Report Time",
+  "required": "Required",
+  "contact_person": "Contact Person",
+  "add_work_report": "Add Work Report",
+  "wr_title": "Title",
+  "wrMessages": {
+    "letters_only_allowed": "Only letters and spaces are allowed",
+    "add_edit_workReport": "Add / Edit Work Report",
+    "workReport_added_successfully": "Work Report added successfully",
+    "workReport_add_error": "Failed to add Work Report",
+    "workReport_updated_successfully": "Work Report updated successfully",
+    "workReport_update_error": "Failed to update Work Report",
+    "workReport_removed_successfully": "Work Report removed successfully",
+    "workReport_remove_error": "Failed to remove Work Report"
+  }
+}

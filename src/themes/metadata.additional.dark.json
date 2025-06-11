@@ -1,0 +1,10 @@
+{
+  "items": [],
+  "baseTheme": "fluent.blue.dark",
+  "assetsBasePath": "../../../node_modules/devextreme/dist/css/",
+  "outputColorScheme": "additional-dark",
+  "makeSwatch": true,
+  "base": true,
+  "widgets": ["TreeView"],
+  "removeExternalResources": false
+}

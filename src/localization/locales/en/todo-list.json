@@ -1,0 +1,23 @@
+{
+  "show_filter": "Show Filter",
+  "hide_filter": "Hide Filter",
+  "clear": "Clear",
+  "filter": "Filter",
+  "task_name": "Task Name",
+  "department": "Department",
+  "person_in_charge": "Person in Charge",
+  "content": "Content",
+  "start_date": "Start Date",
+  "due_date": "Due Date",
+  "task_priority": "Task Priority",
+  "status": "Status",
+  "details": "Details",
+  "add_new": "Add New",
+  "company": "Company",
+  "required": "Required",
+  "add_task": "Add Task",
+  "expired_task_message": "This task is expired",
+  "is_expired": "Expiration Status",
+  "available": "Available",
+  "expired": "Expired"
+}

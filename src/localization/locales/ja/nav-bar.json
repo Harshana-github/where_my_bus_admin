@@ -1,0 +1,12 @@
+{
+  "home": "ホーム",
+  "company": "会社",
+  "company_list": "会社一覧",
+  "company_details": "会社の詳細",
+  "todo_list": "TODO",
+  "work_report": "対応記録",
+  "setting": "設定",
+  "system_settings": "システム設定",
+  "manage_user": "ユーザー管理",
+  "view_user": "ユーザー表示"
+}

@@ -1,0 +1,38 @@
+{
+  "viewUser": {
+    "common": {
+      "user": "User",
+      "add_user": "Add User",
+      "switch_on": "Switch On",
+      "switch_off": "Switch Off"
+    },
+    "fields": {
+      "name": "Name",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "contact_number": "Contact Number",
+      "email": "Email",
+      "password": "Password",
+      "user_level": "User Level",
+      "is_active": "Is Active",
+      "on": "ON",
+      "off": "OFF",
+      "created_date": "Created Date"
+    },
+    "messages": {
+      "first_name_required": "First name is required",
+      "email_required": "Email is required",
+      "stringLength": "Please enter no more than 255 characters.",
+      "email": "Please enter a valid email address.",
+      "password_required": "Password is required",
+      "minLength": "Please enter at least 8 characters",
+      "user_level_required": "User Level is required",
+      "user_added_successfully": "User added successfully",
+      "user_add_error": "Failed to add user",
+      "user_updated_successfully": "User updated successfully",
+      "user_update_error": "Failed to update user",
+      "user_removed_successfully": "User removed successfully",
+      "user_remove_error": "Failed to remove user"
+    }
+  }
+}

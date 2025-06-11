@@ -1,0 +1,112 @@
+{
+  "settings": {
+    "tabs": {
+      "system_settings": "User Level",
+      "department": "Department",
+      "task_priority": "Task Priority",
+      "task_status": "Task Status",
+      "handling_company": "Handling Company"
+    },
+    "common": {
+      "fields": {
+        "is_active": "Is Active"
+      },
+      "messages": {
+        "search": "Search...",
+        "confirm_delete": "Are you sure you want to delete this item?",
+        "save": "Save",
+        "add": "Add",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "userLevel": {
+      "fields": {
+        "name": "User Level",
+        "description": "Description"
+      },
+      "messages": {
+        "system_user_level_required": "User level name is required",
+        "letters_only_allowed": "Only letters and spaces are allowed",
+        "add_edit_system_settings": "Add / Edit User Level",
+        "user_level_added_successfully": "User level added successfully",
+        "user_level_add_error": "Failed to add user level",
+        "user_level_updated_successfully": "User level updated successfully",
+        "user_level_update_error": "Failed to update user level",
+        "user_level_removed_successfully": "User level removed successfully",
+        "user_level_remove_error": "Failed to remove user level"
+      }
+    },
+    "department": {
+      "fields": {
+        "department_name": "Department Name",
+        "color_code": "Color Code"
+      },
+      "messages": {
+        "department_name_required": "Department name is required",
+        "add_edit_department": "Add / Edit Department",
+        "add_success": "Department added successfully",
+        "add_error": "Failed to add department",
+        "update_success": "Department updated successfully",
+        "update_error": "Failed to update department",
+        "delete_success": "Department deleted successfully",
+        "delete_error": "Failed to delete department"
+      }
+    },
+    "taskPriority": {
+      "fields": {
+        "priority_name": "Priority Name"
+      },
+      "messages": {
+        "priority_name_required": "Priority name is required",
+        "color_code_required": "Color code is required",
+        "not_choose": "Not Choose",
+        "invalid": "Invalid",
+        "copied": "Coppied",
+        "add_edit_task_priority": "Add / Edit Task Priority",
+        "add_success": "Task priority added successfully",
+        "add_error": "Failed to add task priority",
+        "update_success": "Task priority updated successfully",
+        "update_error": "Failed to update task priority",
+        "delete_success": "Task priority deleted successfully",
+        "delete_error": "Failed to delete task priority"
+      }
+    },
+    "taskStatus": {
+      "fields": {
+        "status_name": "Status Name",
+        "color_code": "Color Code"
+      },
+      "messages": {
+        "status_name_required": "Status name is required",
+        "color_code_required": "Color code is required",
+        "not_choose": "Not Choose",
+        "invalid": "Invalid",
+        "copied": "Coppied",
+        "add_edit_task_status": "Add / Edit Task Status",
+        "add_success": "Task status added successfully",
+        "add_error": "Failed to add task status",
+        "update_success": "Task status updated successfully",
+        "update_error": "Failed to update task status",
+        "delete_success": "Task status deleted successfully",
+        "delete_error": "Failed to delete task status"
+      }
+    },
+    "handlingCompany": {
+      "fields": {
+        "handling_company_name": "Handling Company Name"
+      },
+      "messages": {
+        "handling_company_name_required": "Handling Company is required",
+        "add_edit_handling_company": "Add / Edit Handling Company",
+        "add_success": "Task handling company added successfully",
+        "add_error": "Failed to add task handling company",
+        "update_success": "Task handling company updated successfully",
+        "update_error": "Failed to update task handling company",
+        "delete_success": "Task handling company deleted successfully",
+        "delete_error": "Failed to delete task handling company"
+      }
+    }
+  }
+}
