@@ -22,6 +22,8 @@ import { useUserLevelStore } from "../../stores/useUserLevelStore";
 
 import "./SystemSettingsPage.scss";
 import { useUserStore } from "../../stores/useUserStore";
+import { useTownStore } from "../../stores/useTownStore";
+import { useBusStore } from "../../stores/useBusStore";
 
 const pageSizes = [10, 25, 50, 100];
 
@@ -36,6 +38,8 @@ const SystemSettingsPage = () => {
   const updateUserLevel = useUserLevelStore((state) => state.updateUserLevel);
   const deleteUserLevel = useUserLevelStore((state) => state.deleteUserLevel);
   const getUserModules = useUserStore((state) => state.getUserModules);
+  const getAllBuses = useBusStore((state) => state.getAllBuses);
+  const buses = useBusStore((state) => state.buses);
 
   useEffect(() => {
     if (!selectedTab) {
@@ -45,8 +49,8 @@ const SystemSettingsPage = () => {
 
   useEffect(() => {
     getAllUserLevels();
-    getUserModules();
-  }, [getAllUserLevels, getUserModules]);
+    getAllBuses();
+  }, [getAllUserLevels, getUserModules, getAllBuses]);
 
   const handleRowInserting = async (e) => {
     const result = await addUserLevel(e.data);
@@ -125,7 +129,7 @@ const SystemSettingsPage = () => {
     <div className={"system-settings-page"}>
       <SettingsTabPanel />
       <DataGrid
-        dataSource={userLevels}
+        dataSource={buses}
         keyExpr="id"
         showBorders={true}
         showRowLines
@@ -182,24 +186,15 @@ const SystemSettingsPage = () => {
         </Editing>
         <Column dataField="id" caption={t("ID")} width={60} alignment="left" />
         <Column
-          caption={t("settings.userLevel.fields.name")}
-          dataField="name"
+          caption={t("Bus Number")}
+          dataField="bus_number"
           dataType="string"
           alignment="left"
         >
-          <RequiredRule
-            message={t(
-              "settings.userLevel.messages.system_user_level_required"
-            )}
-          />
-          <CustomRule
-            message={t("settings.userLevel.messages.letters_only_allowed")}
-            validationCallback={(e) => /^[A-Za-z\s]+$/.test(e.value)}
-          />
         </Column>
         <Column
-          caption={t("settings.userLevel.fields.description")}
-          dataField="description"
+          caption={t("Registraion ID")}
+          dataField="registration_id"
           dataType="string"
           alignment="left"
         />
@@ -212,13 +207,6 @@ const SystemSettingsPage = () => {
         />
         <Column type="buttons" width={120} alignment="center">
           <Button name="edit" />
-
-          <Button
-            hint={t("settings.userLevel.fields.assign_roles")}
-            icon="group"
-            // onClick={({ row }) => handleAssignRoles(row.data)}
-          />
-
           <Button name="delete" />
         </Column>
 

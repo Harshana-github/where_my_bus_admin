@@ -6,10 +6,6 @@ import { useTranslation } from "react-i18next";
 
 const tabs = [
   { id: "system_settings", path: "/system-settings" },
-  { id: "department", path: "/system-settings/department" },
-  { id: "task_status", path: "/system-settings/task-status" },
-  { id: "task_priority", path: "/system-settings/task-priority" },
-  { id: "handling_company", path: "/system-settings/handling-company" },
 ];
 
 const SettingsTabPanel = () => {

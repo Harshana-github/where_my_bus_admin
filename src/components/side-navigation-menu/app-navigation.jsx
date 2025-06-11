@@ -5,22 +5,20 @@ export const navigation = [
     icon: "home",
   },
   {
-    text: "company",
+    text: "driver",
+    path: "/driver-list",
     icon: "user",
-    items: [
-      { text: "company_list", path: "/company-list" },
-    ],
   },
-  {
-    text: "todo_list",
-    path: "/todo-list",
-    icon: "checklist",
-  },
-  {
-    text: "work_report",
-    path: "/work-report",
-    icon: "chart",
-  },
+  // {
+  //   text: "todo_list",
+  //   path: "/todo-list",
+  //   icon: "checklist",
+  // },
+  // {
+  //   text: "work_report",
+  //   path: "/work-report",
+  //   icon: "chart",
+  // },
   {
     text: "setting",
     icon: "preferences",

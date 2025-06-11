@@ -1,153 +1,54 @@
 .company-details-page {
-  .collapsible-header {
-    padding: 10px 20px;
-    border-bottom: 1px solid #e0e0e0;
-    //  background-color: #f5f5f5;
+
+  h2 {
+    margin-bottom: 16px;
+    color: #333;
   }
 
-  // .responsive-filter-container {
-  //   display: flex !important;
-  //   flex-wrap: nowrap !important;
-  //   overflow-x: auto;
-  //   gap: 16px;
-  //   padding: 16px;
-  //   background-color: #f8f9fa;
-
-  //   &::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  //   -ms-overflow-style: none;
-  //   scrollbar-width: none;
-  // }
-
-  // .filter-item {
-  //   flex: 0 0 auto;
-  //   // min-width: 250px;
-  // }
-
-  // @media screen and (max-width: 768px) {
-  //   .responsive-filter-container {
-  //     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  //     gap: 12px;
-  //   }
-  // }
-
-  // @media screen and (max-width: 480px) {
-  //   .responsive-filter-container {
-  //     grid-template-columns: 1fr;
-  //   }
-  // }
-
-  .form-row {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .form-group {
-    min-width: 150px;
-  }
-
-  label {
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-
-  .boxBackround {
-    //   background-color: white;
-    gap: 8px;
-  }
-
-  .toolbarPadding {
-    padding: 8px !important;
-  }
-
-  .label-row-container {
-    padding: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: white !important;
-    gap: 8px;
-  }
-
-  .label-box {
-    background-color: #e6f0fa;
-    padding: 6px;
-    border-radius: 1px;
-    height: auto;
-    align-items: center;
-  }
-
-  .label-box-white {
-    background-color: #ffffff;
-    padding: 6px;
-    border-radius: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: auto;
-    align-items: center;
-  }
-
-  .combined-box {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .dx-tabpanel {
-    margin-top: 24px;
-    background-color: #f0f7ff;
+  .driver-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+    background: #f9f9f9;
+    padding: 16px;
     border-radius: 8px;
 
-    .dx-tab {
-      padding: 10px 16px;
-      font-weight: 500;
+    div {
+      font-size: 15px;
+      line-height: 1.6;
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
-    .dx-tab-selected {
-      background-color: #e0eaff;
-      font-weight: bold;
-    }
-  }
-  .dx-datagrid .dx-master-detail-row {
-    background-color: #fafafa;
-  }
-  .responsiveBox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .responsiveBox > div {
-    flex: 1 1 300px;
-    min-width: 100%;
-  }
-
-  @media (min-width: 480px) {
-    .responsiveBox > div {
-      min-width: 45%;
+    strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #555;
     }
   }
 
-  @media (min-width: 768px) {
-    .responsiveBox > div {
-      min-width: 30%;
-    }
-  }
+  .bus-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #fff;
+    transition: box-shadow 0.2s ease;
 
-  @media (min-width: 1024px) {
-    .responsiveBox > div {
-      min-width: auto;
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-  }
-  @media (max-width: 750px) {
-    .boxBackround.dx-box-flex.dx-box.dx-widget.dx-collection {
-      display: block !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-    }
-  }
 
-  .expired-task-row {
-    font-weight: bold;
-    color: rgba(212, 76, 76, 0.894);
+    div {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-weight: 600;
+      color: #333;
+    }
   }
 }

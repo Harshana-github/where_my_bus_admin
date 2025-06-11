@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (pageTitle.length > 0) {
-      document.title = "Ohayo" + " - " + pageTitle;
+      document.title = "WMB" + " - " + pageTitle;
     }
   }, [pageTitle]);
 

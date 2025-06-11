@@ -13,7 +13,7 @@ export const useUserStore = create((set) => ({
     useUIStore.getState().setLoading(true);
     set({ error: null });
     try {
-      const resp = await customFetch.post("/user/add", user);
+      const resp = await customFetch.post("/users", user);
       return { isOk: true, data: resp.data.msg };
     } catch (error) {
       set({ error: error.message || "An error occurred" });
@@ -27,7 +27,7 @@ export const useUserStore = create((set) => ({
     useUIStore.getState().setLoading(true);
     set({ error: null });
     try {
-      const resp = await customFetch.put(`/user/update/${id}`, user);
+      const resp = await customFetch.put(`/users/${id}`, user);
       return { isOk: true, data: resp.data };
     } catch (error) {
       const err = checkForUnauthorizedResponse(error);
@@ -42,7 +42,7 @@ export const useUserStore = create((set) => ({
     useUIStore.getState().setLoading(true);
     set({ error: null });
     try {
-      const resp = await customFetch.delete(`/user/delete/${userId}`);
+      const resp = await customFetch.delete(`/users/${userId}`);
       return { isOk: true, data: resp.data.msg };
     } catch (error) {
       const err = checkForUnauthorizedResponse(error);
@@ -57,7 +57,7 @@ export const useUserStore = create((set) => ({
     useUIStore.getState().setLoading(true);
     set({ error: null });
     try {
-      const resp = await customFetch.get("/user/select_all");
+      const resp = await customFetch.get("/users");
       set({ users: resp.data });
       return { isOk: true, data: resp.data };
     } catch (error) {
@@ -72,7 +72,7 @@ export const useUserStore = create((set) => ({
   getActiveUsers: async () => {
     set({ error: null });
     try {
-      const resp = await customFetch.get("/user/select_all_active");
+      const resp = await customFetch.get("/users");
       set({ usersActive: resp.data });
       return { isOk: true, data: resp.data };
     } catch (error) {
@@ -87,7 +87,7 @@ export const useUserStore = create((set) => ({
     useUIStore.getState().setLoading(true);
     set({ error: null });
     try {
-      const resp = await customFetch.get(`/user/select/${userId}`);
+      const resp = await customFetch.get(`/users/${userId}`);
       set({ userById: resp.data });
       return { isOk: true, data: resp.data };
     } catch (error) {

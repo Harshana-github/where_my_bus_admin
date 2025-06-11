@@ -30,6 +30,7 @@ import { useUserStore } from "../../stores/useUserStore";
 
 import "./CompanyListPage.scss";
 import { useHandlingCompanyStore } from "../../stores/useHandlingCompanyStore";
+import { useDriverStore } from "../../stores/useDriverStore";
 
 const LabeledField = memo(({ label, children }) => (
   <div style={{ display: "flex", flexDirection: "column" }}>
@@ -49,6 +50,8 @@ const CompanyListPage = () => {
   const updateCompany = useCompanyStore((state) => state.updateCompany);
   const getAllCompanies = useCompanyStore((state) => state.getAllCompanies);
   const deleteCompany = useCompanyStore((state) => state.deleteCompany);
+  const getAllDrivers = useDriverStore((state) => state.getAllDrivers);
+  const drivers = useDriverStore((state) => state.drivers);
 
   const usersActive = useUserStore((state) => state.usersActive);
   const getActiveUsers = useUserStore((state) => state.getActiveUsers);
@@ -60,9 +63,9 @@ const CompanyListPage = () => {
     (state) => state.getActiveHandlingCompanies
   );
 
-  const [filterCompanyValue, setFilterCompanyValue] = useState([]);
   const [isCompanyCollapsed, setIsCompanyCollapsed] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+  const [filterCompanyValue, setFilterCompanyValue] = useState([]);
   const [filterCompanies, setFilterCompanies] = useState({
     id: null,
     company_name: "",
@@ -72,38 +75,83 @@ const CompanyListPage = () => {
     is_active: null,
   });
 
+  const [filterDriverValue, setFilterDriverValue] = useState([]);
+  const [filterDrivers, setFilterDrivers] = useState({
+    id: null,
+    license_number: "",
+    phone: "",
+    name: "",
+    email: "",
+    is_profile_completed: null,
+  });
+
   const handleToggleCollapse = () => setIsCompanyCollapsed((prev) => !prev);
 
-  const handleApplyCompanyFilter = () => {
-    const filterConditions = [];
-    if (filterCompanies.id)
-      filterConditions.push(["id", "=", filterCompanies.id]);
-    if (filterCompanies.company_name)
-      filterConditions.push([
-        "company_name",
-        "contains",
-        filterCompanies.company_name,
-      ]);
-    if (filterCompanies.incharge_id)
-      filterConditions.push(["incharge_id", "=", filterCompanies.incharge_id]);
-    if (filterCompanies.email)
-      filterConditions.push(["email", "contains", filterCompanies.email]);
-    if (filterCompanies.company_handling_id)
-      filterConditions.push([
-        "company_handling_id",
-        "=",
-        filterCompanies.company_handling_id,
-      ]);
-    if (filterCompanies.is_active === 1 || filterCompanies.is_active === 0) {
-      filterConditions.push(["is_active", "=", filterCompanies.is_active]);
-    }
+  // const handleApplyCompanyFilter = () => {
+  //   const filterConditions = [];
+  //   if (filterCompanies.id)
+  //     filterConditions.push(["id", "=", filterCompanies.id]);
+  //   if (filterCompanies.company_name)
+  //     filterConditions.push([
+  //       "company_name",
+  //       "contains",
+  //       filterCompanies.company_name,
+  //     ]);
+  //   if (filterCompanies.incharge_id)
+  //     filterConditions.push(["incharge_id", "=", filterCompanies.incharge_id]);
+  //   if (filterCompanies.email)
+  //     filterConditions.push(["email", "contains", filterCompanies.email]);
+  //   if (filterCompanies.company_handling_id)
+  //     filterConditions.push([
+  //       "company_handling_id",
+  //       "=",
+  //       filterCompanies.company_handling_id,
+  //     ]);
+  //   if (filterCompanies.is_active === 1 || filterCompanies.is_active === 0) {
+  //     filterConditions.push(["is_active", "=", filterCompanies.is_active]);
+  //   }
 
-    if (filterConditions.length > 1) {
-      setFilterCompanyValue(["and", ...filterConditions]);
-    } else if (filterConditions.length === 1) {
-      setFilterCompanyValue(filterConditions[0]);
+  //   if (filterConditions.length > 1) {
+  //     setFilterCompanyValue(["and", ...filterConditions]);
+  //   } else if (filterConditions.length === 1) {
+  //     setFilterCompanyValue(filterConditions[0]);
+  //   } else {
+  //     setFilterCompanyValue([]);
+  //   }
+  // };
+
+  const handleApplyDriverFilter = () => {
+    const conditions = [];
+
+    if (filterDrivers.id) conditions.push(["id", "=", filterDrivers.id]);
+    if (filterDrivers.license_number)
+      conditions.push([
+        "license_number",
+        "contains",
+        filterDrivers.license_number,
+      ]);
+    if (filterDrivers.phone)
+      conditions.push(["phone", "contains", filterDrivers.phone]);
+    if (filterDrivers.name)
+      conditions.push(["user.name", "contains", filterDrivers.name]);
+    if (filterDrivers.email)
+      conditions.push(["user.email", "contains", filterDrivers.email]);
+    if (
+      filterDrivers.is_profile_completed === 0 ||
+      filterDrivers.is_profile_completed === 1
+    )
+      conditions.push([
+        "user.is_profile_completed",
+        "=",
+        filterDrivers.is_profile_completed,
+      ]);
+
+    if (conditions.length > 1) {
+      setFilterDriverValue(["and", ...conditions]);
+    } else if (conditions.length === 1) {
+      setFilterDriverValue(conditions[0]);
     } else {
-      setFilterCompanyValue([]);
+      setFilterDriverValue([]);
     }
   };
 
@@ -119,7 +167,7 @@ const CompanyListPage = () => {
     setFilterCompanyValue([]);
   };
 
-  const onRowClick = (e) => navigate(`/company-details/${e.data.id}`);
+  const onRowClick = (e) => navigate(`/driver-details/${e.data.id}`);
 
   const handleRowInserting = async (e) => {
     const updatedData = {
@@ -232,107 +280,27 @@ const CompanyListPage = () => {
   useEffect(() => {
     getAllCompanies();
     getActiveUsers();
+    getAllDrivers();
     getActiveHandlingCompanies();
-  }, [getAllCompanies, getActiveUsers, getActiveHandlingCompanies]);
+  }, [
+    getAllCompanies,
+    getActiveUsers,
+    getActiveHandlingCompanies,
+    getAllDrivers,
+  ]);
 
   const columns = [
-    // Company columns
-    { caption: t("ID"), dataField: "id", width: 60 },
-    { caption: t("company_name"), dataField: "company_name", required: true },
-    {
-      caption: t("company_name_kana"),
-      dataField: "company_name_kana",
-      visible: false,
-    },
-    {
-      caption: t("company_incharge"),
-      dataField: "incharge_id",
-      cellRender: null,
-      lookup: {
-        dataSource: usersActive,
-        valueExpr: "id",
-        displayExpr: "first_name",
-      },
-      required: true,
-    },
-    {
-      caption: t("handling_company"),
-      dataField: "company_handling_id",
-      cellRender: null,
-      lookup: {
-        dataSource: activeHandlingCompanies,
-        valueExpr: "id",
-        displayExpr: "name",
-      },
-      required: true,
-    },
-    { caption: t("email"), dataField: "email", required: true, isEmail: true },
-    { caption: t("tel"), dataField: "telephone", dataType: "number" },
-    {
-      caption: t("mobile_tel"),
-      dataField: "mobile",
-      visible: false,
-      dataType: "number",
-    },
-    { caption: t("address_01"), dataField: "address01", visible: false },
-    { caption: t("address_02"), dataField: "address02", visible: false },
-    {
-      caption: t("postal_code"),
-      dataField: "postal_code",
-      visible: false,
-      dataType: "number",
-    },
-    {
-      caption: t("is_active"),
-      dataField: "is_active",
-      dataType: "boolean",
-      width: 80,
-      alignment: "center",
-    },
+    { caption: "Driver ID", dataField: "id", width: 60 },
+    { caption: "User Name", dataField: "user.name", required: true },
+    { caption: "License Number", dataField: "license_number", required: true },
+    { caption: "Phone", dataField: "phone", required: true },
 
-    // Contact person hidden columns
-    { caption: t("ID"), dataField: "contact_id", visible: false },
+    { caption: "User Email", dataField: "user.email", required: true },
     {
-      caption: t("contact_title"),
-      dataField: "contact_persons[0].title",
-      visible: false,
-    },
-    {
-      caption: t("contact_name"),
-      dataField: "contact_persons[0].name",
-      visible: true,
-      required: true,
-    },
-    {
-      caption: t("contact_kana_name"),
-      dataField: "contact_persons[0].kana_name",
-      visible: false,
-    },
-    {
-      caption: t("contact_email"),
-      dataField: "contact_persons[0].email",
-      visible: false,
-      isEmail: true,
-    },
-    {
-      caption: t("contact_mobile"),
-      dataField: "contact_persons[0].mobile",
-      visible: false,
-      dataType: "number",
-    },
-    {
-      caption: t("contact_telephone"),
-      dataField: "contact_persons[0].telephone",
-      visible: false,
-      dataType: "number",
-    },
-    {
-      caption: t("contact_is_active"),
-      dataField: "contact_persons[0].is_active",
+      caption: "Profile Completed",
+      dataField: "user.is_profile_completed",
       dataType: "boolean",
-      visible: false,
-      width: 80,
-      alignment: "center",
+      width: 60,
     },
   ];
 
@@ -347,7 +315,7 @@ const CompanyListPage = () => {
       widget: "dxButton",
       options: {
         icon: "plus",
-        text: t("add_company"),
+        text: t("Add Driver"),
         onClick: () => e.component.addRow(),
         stylingMode: "contained",
         showText: "always",
@@ -370,6 +338,18 @@ const CompanyListPage = () => {
     });
   }, []);
 
+  const handleClearDriverFilter = () => {
+    setFilterDrivers({
+      id: null,
+      license_number: "",
+      phone: "",
+      name: "",
+      email: "",
+      is_profile_completed: null,
+    });
+    setFilterDriverValue([]);
+  };
+
   return (
     <div className={"company-list-page"}>
       <ToolbarTX className="toolbarPadding">
@@ -391,13 +371,13 @@ const CompanyListPage = () => {
                 icon="clear"
                 text={t("clear")}
                 type="normal"
-                onClick={handleClearCompanyFilter}
+                onClick={handleClearDriverFilter}
               />
               <Button
                 icon="filter"
                 text={t("filter")}
                 type="default"
-                onClick={handleApplyCompanyFilter}
+                onClick={handleApplyDriverFilter}
               />
             </div>
           )}
@@ -416,124 +396,84 @@ const CompanyListPage = () => {
               backgroundColor: "#f8f9fa",
             }}
           >
-            <div className="filter-item">
-              <LabeledField label={t("ID")}>
-                <TextBox
-                  placeholder={t("ID")}
-                  value={filterCompanies.id}
-                  showClearButton
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({
-                      ...prev,
-                      id: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"ID"}>
+              <TextBox
+                value={filterDrivers.id}
+                showClearButton
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({ ...prev, id: e.value }))
+                }
+              />
+            </LabeledField>
 
-            <div className="filter-item">
-              <LabeledField label={t("company_name")}>
-                <TextBox
-                  placeholder={t("company_name")}
-                  value={filterCompanies.company_name}
-                  showClearButton
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({
-                      ...prev,
-                      company_name: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"License Number"}>
+              <TextBox
+                value={filterDrivers.license_number}
+                showClearButton
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({
+                    ...prev,
+                    license_number: e.value,
+                  }))
+                }
+              />
+            </LabeledField>
 
-            <div className="filter-item">
-              <LabeledField label={t("company_incharge")}>
-                <SelectBox
-                  items={usersActive}
-                  placeholder={t("company_incharge")}
-                  valueExpr="id"
-                  displayExpr="first_name"
-                  value={filterCompanies.incharge_id}
-                  searchEnabled
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({
-                      ...prev,
-                      incharge_id: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"Phone"}>
+              <TextBox
+                value={filterDrivers.phone}
+                showClearButton
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({ ...prev, phone: e.value }))
+                }
+              />
+            </LabeledField>
 
-            <div className="filter-item">
-              <LabeledField label={t("email")}>
-                <TextBox
-                  placeholder={t("email")}
-                  value={filterCompanies.email}
-                  showClearButton
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({ ...prev, email: e.value }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"User Name"}>
+              <TextBox
+                value={filterDrivers.name}
+                showClearButton
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({ ...prev, name: e.value }))
+                }
+              />
+            </LabeledField>
 
-            <div className="filter-item">
-              <LabeledField label={t("handling_company")}>
-                <SelectBox
-                  items={activeHandlingCompanies}
-                  placeholder={t("handling_company")}
-                  valueExpr="id"
-                  displayExpr="name"
-                  value={filterCompanies.company_handling_id}
-                  searchEnabled
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({
-                      ...prev,
-                      company_handling_id: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"User Email"}>
+              <TextBox
+                value={filterDrivers.email}
+                showClearButton
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({ ...prev, email: e.value }))
+                }
+              />
+            </LabeledField>
 
-            <div className="filter-item">
-              <LabeledField label={t("is_active")}>
-                <SelectBox
-                  items={[
-                    { id: null, text: t("All") },
-                    { id: 1, text: t("Active") },
-                    { id: 0, text: t("Inactive") },
-                  ]}
-                  placeholder={t("is_active")}
-                  valueExpr="id"
-                  displayExpr="text"
-                  value={filterCompanies.is_active}
-                  searchEnabled
-                  onValueChanged={(e) =>
-                    setFilterCompanies((prev) => ({
-                      ...prev,
-                      is_active: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
+            <LabeledField label={"Profile Completed"}>
+              <SelectBox
+                items={[
+                  { id: null, text: "All" },
+                  { id: 1, text: "Completed" },
+                  { id: 0, text: "Not Completed" },
+                ]}
+                displayExpr="text"
+                valueExpr="id"
+                value={filterDrivers.is_profile_completed}
+                onValueChanged={(e) =>
+                  setFilterDrivers((prev) => ({
+                    ...prev,
+                    is_profile_completed: e.value,
+                  }))
+                }
+              />
+            </LabeledField>
           </div>
         </>
       )}
 
       <DataGrid
-        dataSource={companies}
-        filterValue={filterCompanyValue}
+        dataSource={drivers}
+        filterValue={filterDriverValue}
         onToolbarPreparing={onToolbarPreparing}
         keyExpr="id"
         onRowClick={onRowClick}
@@ -564,7 +504,7 @@ const CompanyListPage = () => {
         onRowPrepared={(e) => {
           if (e.rowType === "data") {
             e.rowElement.style.cursor = "pointer";
-            e.rowElement.title = t("clMessages.row_click_tooltip");
+            // e.rowElement.title = t("clMessages.row_click_tooltip");
             e.rowElement.classList.add("custom-hover-row");
           }
         }}
@@ -577,52 +517,13 @@ const CompanyListPage = () => {
           selectAllMode="allPages"
           showCheckBoxesMode="always"
         />
-        <Editing mode="popup" allowUpdating allowDeleting allowAdding useIcons>
-          <Popup
-            title={t("add_edit_company")}
-            showTitle
-            maxWidth={window.innerWidth < 500 ? "90%" : 1000}
-            maxHeight={700}
-            dragEnabled={false}
-            closeOnOutsideClick
-            showCloseButton
-            resizeEnabled
-            position="center"
-          />
-          <Form labelLocation="top" colCount={2}>
-            <Item itemType="group" caption={t("company_details")}>
-              <Item
-                dataField="id"
-                editorOptions={{ readOnly: true }}
-                visible={!isAdding}
-              />
-              <Item dataField="company_name" />
-              <Item dataField="company_name_kana" />
-              <Item dataField="incharge_id" editorType="dxSelectBox" />
-              <Item dataField="company_handling_id" editorType="dxSelectBox" />
-              <Item dataField="email" />
-              <Item dataField="telephone" />
-              <Item dataField="mobile" />
-              <Item dataField="postal_code" />
-              <Item dataField="address01" />
-              <Item dataField="address02" />
-              <Item dataField="is_active" editorType="dxCheckBox" />
-            </Item>
-            <Item itemType="group" caption={t("contact_person_details")}>
-              <Item dataField="contact_persons[0].id" visible={false} />
-              <Item dataField="contact_persons[0].title" />
-              <Item dataField="contact_persons[0].name" />
-              <Item dataField="contact_persons[0].kana_name" />
-              <Item dataField="contact_persons[0].email" />
-              <Item dataField="contact_persons[0].mobile" />
-              <Item dataField="contact_persons[0].telephone" />
-              <Item
-                dataField="contact_persons[0].is_active"
-                editorType="dxCheckBox"
-              />
-            </Item>
-          </Form>
-        </Editing>
+        <Editing
+          mode="popup"
+          allowUpdating
+          allowDeleting
+          allowAdding
+          useIcons
+        ></Editing>
 
         {columns.map(
           ({

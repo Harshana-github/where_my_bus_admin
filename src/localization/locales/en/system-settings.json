@@ -1,7 +1,7 @@
 {
   "settings": {
     "tabs": {
-      "system_settings": "User Level",
+      "system_settings": "Bus Master",
       "department": "Department",
       "task_priority": "Task Priority",
       "task_status": "Task Status",

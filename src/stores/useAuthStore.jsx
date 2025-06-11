@@ -18,7 +18,7 @@ export const useAuthStore = create((set) => ({
             const resp = await customFetch.post("/auth/login", user);
             if (!resp.data || resp.data.id === 0) throw new Error("Custom Error Message");
             set({ user: resp.data.user });
-            addUserToLocalStorage({ ...resp.data.user_data, token: resp.data.token });
+            addUserToLocalStorage({ ...resp.data.user, token: resp.data.token.original.access_token });
             return { isOk: true, data: resp.data };
         } catch (error) {
             set({ error: error.response?.data?.msg || "An error occurred" });

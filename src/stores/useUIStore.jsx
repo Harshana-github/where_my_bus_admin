@@ -4,11 +4,11 @@ export const useUIStore = create((set) => ({
     isLoading: false,
     modal: null,
     notification: null,
-    pageTitle: '',
+    pageTitle: 'Where my Bus',
     language: localStorage.getItem('language') || 'ja',
     languages: [
         { id: 'en', name: 'English' },
-        { id: 'ja', name: '日本語' },
+        // { id: 'ja', name: 'සිංහල' },
     ],
 
     setLoading: (isLoading) => set({ isLoading }),

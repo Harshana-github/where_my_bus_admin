@@ -37,7 +37,7 @@ const ViewUserPage = () => {
   const [filterUsersValue, setFilterUsersValue] = useState([]);
   const [filterUsers, setFilterUsers] = useState({
     id: null,
-    user_level_id: null,
+    user_type: null,
     first_name: "",
     last_name: "",
     email: "",
@@ -94,8 +94,8 @@ const ViewUserPage = () => {
   const handleApplyUserFilter = () => {
     const filterConditions = [];
     if (filterUsers.id) filterConditions.push(["id", "=", filterUsers.id]);
-    if (filterUsers.user_level_id)
-      filterConditions.push(["user_level_id", "=", filterUsers.user_level_id]);
+    if (filterUsers.user_type)
+      filterConditions.push(["user_type", "=", filterUsers.user_type]);
     if (filterUsers.first_name)
       filterConditions.push(["first_name", "contains", filterUsers.first_name]);
     if (filterUsers.last_name)
@@ -229,16 +229,20 @@ const ViewUserPage = () => {
             <div className="filter-item">
               <LabeledField label={t("viewUser.fields.user_level")}>
                 <SelectBox
-                  items={userLevels}
+                  items={[
+                    { id: "admin", name: t("Admin") },
+                    { id: "passenger", name: t("Passenger") },
+                    { id: "driver", name: t("Driver") },
+                  ]}
                   placeholder={t("viewUser.fields.user_level")}
                   valueExpr="id"
                   displayExpr="name"
-                  value={filterUsers.user_level_id}
+                  value={filterUsers.user_type}
                   searchEnabled
                   onValueChanged={(e) =>
                     setFilterUsers((prev) => ({
                       ...prev,
-                      user_level_id: e.value,
+                      user_type: e.value,
                     }))
                   }
                   width="100%"
@@ -247,32 +251,15 @@ const ViewUserPage = () => {
             </div>
 
             <div className="filter-item">
-              <LabeledField label={t("viewUser.fields.first_name")}>
+              <LabeledField label={t("viewUser.fields.name")}>
                 <TextBox
-                  placeholder={t("viewUser.fields.first_name")}
+                  placeholder={t("viewUser.fields.name")}
                   value={filterUsers.first_name}
                   showClearButton
                   onValueChanged={(e) =>
                     setFilterUsers((prev) => ({
                       ...prev,
                       first_name: e.value,
-                    }))
-                  }
-                  width="100%"
-                />
-              </LabeledField>
-            </div>
-
-            <div className="filter-item">
-              <LabeledField label={t("viewUser.fields.last_name")}>
-                <TextBox
-                  placeholder={t("viewUser.fields.last_name")}
-                  value={filterUsers.last_name}
-                  showClearButton
-                  onValueChanged={(e) =>
-                    setFilterUsers((prev) => ({
-                      ...prev,
-                      last_name: e.value,
                     }))
                   }
                   width="100%"
@@ -365,8 +352,8 @@ const ViewUserPage = () => {
               visible={!isAddMode}
             />
             <Item
-              dataField="first_name"
-              caption={t("viewUser.fields.first_name")}
+              dataField="name"
+              caption={t("viewUser.fields.name")}
               isRequired={true}
               validationRules={[
                 {
@@ -381,19 +368,9 @@ const ViewUserPage = () => {
               ]}
             />
             <Item
-              dataField="last_name"
-              caption={t("viewUser.fields.last_name")}
-              validationRules={[
-                {
-                  type: "stringLength",
-                  max: 255,
-                  message: t("viewUser.messages.stringLength"),
-                },
-              ]}
-            />
-            <Item
               dataField="contact_number"
               caption={t("viewUser.fields.contact_number")}
+              visible={false}
               validationRules={[
                 {
                   type: "stringLength",
@@ -423,43 +400,6 @@ const ViewUserPage = () => {
               caption={t("viewUser.fields.password")}
               isRequired={isAddMode ? true : false}
               editorOptions={{ mode: "password" }}
-              // validationRules={[
-              //   {
-              //     type: "required",
-              //     message: t("viewUser.messages.password_required"),
-              //   },
-              //   {
-              //     type: "stringLength",
-              //     min: 8,
-              //     message: t("viewUser.messages.minLength"),
-              //   },
-              // ]}
-              // validationRules={(options) => {
-              //   // Add: required and min 8 chars
-              //   if (options && options.data && options.data.__isNewRow) {
-              //     return [
-              //       {
-              //         type: "required",
-              //         message: t("viewUser.messages.password_required"),
-              //       },
-              //       {
-              //         type: "stringLength",
-              //         min: 8,
-              //         message: t("viewUser.messages.minLength"),
-              //       },
-              //     ];
-              //   }
-              //   // Update: only validate if not empty
-              //   return [
-              //     {
-              //       type: "custom",
-              //       validationCallback: (e) => {
-              //         return !e.value || e.value.length >= 8;
-              //       },
-              //       message: t("viewUser.messages.minLength"),
-              //     },
-              //   ];
-              // }}
               validationRules={(options) => {
                 if (options && options.data && options.data.__isNewRow) {
                   // Only validate for new rows
@@ -489,9 +429,19 @@ const ViewUserPage = () => {
               }}
             />
             <Item
-              dataField="user_level_id"
+              dataField="user_type"
               caption={t("viewUser.fields.user_level")}
               isRequired={true}
+              editorType="dxSelectBox"
+              editorOptions={{
+                items: [
+                  { id: "admin", name: t("Admin") },
+                  { id: "passenger", name: t("Passenger") },
+                  { id: "driver", name: t("Driver") },
+                ],
+                valueExpr: "id",
+                displayExpr: "name",
+              }}
               validationRules={[
                 {
                   type: "required",
@@ -499,8 +449,9 @@ const ViewUserPage = () => {
                 },
               ]}
             />
+
             <Item
-              dataField="is_active"
+              dataField="is_profile_completed"
               caption={t("viewUser.fields.is_active")}
               editorType="dxCheckBox"
               // editorType="dxSwitch"
@@ -521,19 +472,17 @@ const ViewUserPage = () => {
         />
         <Column
           caption={t("viewUser.fields.name")}
-          calculateCellValue={(rowData) =>
-            `${rowData.first_name || ""} ${rowData.last_name || ""}`.trim()
-          }
+          calculateCellValue={(rowData) => `${rowData.name || ""}`.trim()}
           allowEditing={false}
           width={200}
         />
         <Column
-          dataField="first_name"
+          dataField="name"
           visible={false}
-          caption={t("viewUser.fields.first_name")}
+          caption={t("viewUser.fields.name")}
         />
         <Column
-          dataField="last_name"
+          dataField="name"
           visible={false}
           caption={t("viewUser.fields.last_name")}
         />
@@ -541,6 +490,7 @@ const ViewUserPage = () => {
           dataField="contact_number"
           caption={t("viewUser.fields.contact_number")}
           width={200}
+          visible={false}
         />
         <Column
           dataField="email"
@@ -563,26 +513,13 @@ const ViewUserPage = () => {
               : []
           }
         />
-
-        {/* <Column
-          dataField="password"
-          visible={false}
-          caption={t("viewUser.fields.password")}
-        /> */}
-        {/* <Column
-          dataField="user_level_name"
-          allowEditing={false}
-          caption={t("viewUser.fields.user_level")}
-        /> */}
         <Column
-          dataField="user_level_id"
+          dataField="user_type"
           caption={t("viewUser.fields.user_level")}
           width={125}
-        >
-          <Lookup dataSource={userLevels} valueExpr="id" displayExpr="name" />
-        </Column>
+        ></Column>
         <Column
-          dataField="is_active"
+          dataField="is_profile_completed"
           dataType="boolean"
           caption={t("viewUser.fields.is_active")}
           width={100}

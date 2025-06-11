@@ -1,5 +1,5 @@
 const appInfo = {
-    title: 'Ohayo'
+    title: 'Where my bus'
 };
 export default appInfo;
 

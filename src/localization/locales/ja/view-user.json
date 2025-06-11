@@ -1,36 +1,36 @@
 {
   "viewUser": {
     "common": {
-      "user": "ユーザー",
-      "add_user": "ユーザーを追加"
+      "user": "පරිශීලකයා",
+      "add_user": "පරිශීලකයෙකු එක් කරන්න"
     },
     "fields": {
-      "name": "名前",
-      "first_name": "名",
-      "last_name": "姓",
-      "contact_number": "連絡先番号",
-      "email": "Eメール",
-      "password": "パスワード",
-      "user_level": "ユーザーレベル",
-      "is_active": "有効",
-      "on": "オン",
-      "off": "オフ",
-      "created_date": "作成日"
+      "name": "නම",
+      "first_name": "මුල් නම",
+      "last_name": "වාසගම",
+      "contact_number": "සම්බන්ධීකරණ අංකය",
+      "email": "ඊමේල්",
+      "password": "මුරපදය",
+      "user_level": "පරිශීලක මට්ටම",
+      "is_active": "සක්‍රීයයි",
+      "on": "ආරම්භ",
+      "off": "අවසාන",
+      "created_date": "නිර්මාණය කළ දිනය"
     },
     "messages": {
-      "first_name_required": "名は必須です",
-      "email_required": "Eメールは必須です",
-      "stringLength": "255文字以内で入力してください。",
-      "email": "有効なメールアドレスを入力してください。",
-      "password_required": "パスワードは必須です",
-      "minLength": "8文字以上で入力してください",
-      "user_level_required": "ユーザーレベルは必須です",
-      "user_added_successfully": "ユーザーが正常に追加されました",
-      "user_add_error": "ユーザーの追加に失敗しました",
-      "user_updated_successfully": "ユーザーが正常に更新されました",
-      "user_update_error": "ユーザーの更新に失敗しました",
-      "user_removed_successfully": "ユーザーが正常に削除されました",
-      "user_remove_error": "ユーザーの削除に失敗しました"
+      "first_name_required": "මුල් නම ඇතුළත් කළ යුතුය",
+      "email_required": "ඊමේල් ඇතුළත් කළ යුතුය",
+      "stringLength": "අක්ෂර 255ක් වඩා අඩුවෙන් ඇතුළත් කරන්න",
+      "email": "වලංගු ඊමේල් ලිපිනයක් ඇතුළත් කරන්න",
+      "password_required": "මුරපදය අවශ්‍ය වේ",
+      "minLength": "අවම වශයෙන් අක්ෂර 8ක් ඇතුළත් කළ යුතුය",
+      "user_level_required": "පරිශීලක මට්ටම ඇතුළත් කළ යුතුය",
+      "user_added_successfully": "පරිශීලකයා සාර්ථකව එක් කරන ලදී",
+      "user_add_error": "පරිශීලකයා එක් කිරීම අසාර්ථක විය",
+      "user_updated_successfully": "පරිශීලකයා සාර්ථකව යාවත්කාලීන කරන ලදී",
+      "user_update_error": "පරිශීලකයා යාවත්කාලීන කිරීම අසාර්ථක විය",
+      "user_removed_successfully": "පරිශීලකයා සාර්ථකව ඉවත් කරන ලදී",
+      "user_remove_error": "පරිශීලකයා ඉවත් කිරීම අසාර්ථක විය"
     }
   }
 }

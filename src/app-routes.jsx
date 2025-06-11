@@ -17,8 +17,8 @@ import HandlingCompanyPage from "./pages/system-settings/HandlingCompanyPage";
 
 const routes = [
   { path: "/home", element: HomePage },
-   { path: "/company-list", element: CompanyListPage },
-   { path: "/company-details/:id", element: CompanyDetailsPage },
+   { path: "/driver-list", element: CompanyListPage },
+   { path: "/driver-details/:id", element: CompanyDetailsPage },
   { path: "/todo-list", element: TodoListPage },
   { path: "/work-report", element: WorkReportPage },
   { path: "/system-settings/*", element: SettingsPage },
