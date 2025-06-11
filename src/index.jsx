@@ -14,7 +14,7 @@ loadMessages(jaMessages);
 loadMessages(enMessages);
 
 // Get language from localStorage or default to 'ja'
-const language = localStorage.getItem("language") || "ja";
+const language = localStorage.getItem("language") || "en";
 locale(language);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
