@@ -14,6 +14,7 @@ import TaskPriorityPage from "./pages/system-settings/TaskPriorityPage";
 import TaskStatusPage from "./pages/system-settings/TaskStatusPage";
 import SettingsPage from "./pages/system-settings/SettingsPage";
 import HandlingCompanyPage from "./pages/system-settings/HandlingCompanyPage";
+import TownPage from "./pages/system-settings/TownPage";
 
 const routes = [
   { path: "/home", element: HomePage },
@@ -27,6 +28,7 @@ const routes = [
     element: SystemSettingsPage,
     children: [
       { path: "department", element: DepartmentPage },
+      { path: "town", element: TownPage },
       { path: "task-priority", element: TaskPriorityPage },
       { path: "task-status", element: TaskStatusPage },
       { path: "handling-company", element: HandlingCompanyPage },

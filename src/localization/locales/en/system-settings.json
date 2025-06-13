@@ -5,7 +5,8 @@
       "department": "Department",
       "task_priority": "Task Priority",
       "task_status": "Task Status",
-      "handling_company": "Handling Company"
+      "handling_company": "Handling Company",
+      "town": "Town Master"
     },
     "common": {
       "fields": {

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const tabs = [
   { id: "system_settings", path: "/system-settings" },
+  { id: "town", path: "/system-settings/town" },
 ];
 
 const SettingsTabPanel = () => {
